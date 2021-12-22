@@ -72,4 +72,6 @@ windowPositionY = 0
 
 ## LIMITATIONS
 
-> This can only process upto 2000 data points. This is because the GGG's api serves only 200 data points per page and more api calls mean more chances of getting rate-limited. Another reason is because this will be stored in memory and may cause your system to crash if we handle more. Hence, it will show **CHARACTER NOT FOUND OR RANK > 2000** if it doesn't see your character in the data that have been collected.
+> This can only process upto 2000 data points. This is because the GGG's api serves only 200 data points per page and more api calls mean more chances of getting rate-limited. Another reason is because this will be stored in memory and may cause your system to crash if we handle more. Hence, it will show **CHARACTER NOT FOUND OR RANK > 2000** if it doesn't see your character in the data that have been collected. This means that in bigger leagues (e.g. Gauntlet, main leagues like Scourge, SSF Sourge, etc) you will most likely get that message if you're not in the top 2000 player list.
+
+> TLDR: We have limited api call rates and memory. Hence, bigger leagues with more than 2000 participants will usually get **CHARACTER NOT FOUND OR RANK > 2000** displayed
