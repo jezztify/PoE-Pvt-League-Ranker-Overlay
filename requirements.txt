@@ -1,4 +1,10 @@
 pytest
 pytest-cov
 system_hotkey
-pypiwin32
+pypi
+requests
+jsonpath_ng
+configparser
+# logging
+# operator
+datetime

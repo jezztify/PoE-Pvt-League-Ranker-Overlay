@@ -11,6 +11,22 @@ Character Name: ShadowsAreSquishyLUL
 You only need to edit the **config.ini** and provide the full Private League Name (including the PL code) then run the app itself.
 
 **Demo**: A demo can be seen [Here](https://youtu.be/SlyW3_enPGo)
+## Installation
+
+> Install [Python](https://www.python.org/downloads/)
+
+```
+Supports v3.6 to 3.9
+```
+
+> Install [Python Pip](https://pip.pypa.io/en/stable/installation/#get-pip-py)
+
+> Install Python dependencies
+
+```
+/path/to/python -m pip install --upgrade -r requirements.xt
+```
+
 ## Usage
 
 > Edit the **config.ini**
