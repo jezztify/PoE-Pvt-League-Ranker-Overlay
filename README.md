@@ -10,6 +10,7 @@ Character Name: ShadowsAreSquishyLUL
 
 You only need to edit the **config.ini** and provide the full Private League Name (including the PL code) then run the app itself.
 
+**Demo**: A demo can be seen [Here](https://youtu.be/SlyW3_enPGo)
 ## Usage
 
 > Edit the **config.ini**
