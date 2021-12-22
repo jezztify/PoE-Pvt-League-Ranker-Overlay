@@ -1,0 +1,9 @@
+{
+    "Marauder": ["Juggernaut", "Berserker", "Chieftain"],
+    "Ranger": ["Deadeye", "Raider", "Pathfinder"],
+    "Witch": ["Necromancer", "Elementalist", "Occultist"],
+    "Duelist": ["Slayer", "Gladiator", "Champion"],
+    "Templar": ["Inquisitor", "Hierophant", "Guardian"],
+    "Shadow": ["Assassin", "Saboteur", "Trickster"],
+    "Scion": ["Ascendant"]
+}

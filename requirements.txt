@@ -1,0 +1,4 @@
+pytest
+pytest-cov
+system_hotkey
+pypiwin32
