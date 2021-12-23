@@ -1,3 +1,4 @@
+import sys
 import json
 import operator
 from jsonpath_ng.ext import parse
@@ -5,13 +6,18 @@ from jsonpath_ng.ext import parse
 import logging
 LOGGER = logging.getLogger(__name__)
 FORMAT = "[%(filename)s:%(lineno)s][%(funcName)s()] %(message)s"
-logging.basicConfig(format=FORMAT)
+logging.basicConfig(filename='main.log', format=FORMAT)
+LOGGER.addHandler(logging.StreamHandler(sys.stdout))
 LOGGER.setLevel(logging.DEBUG)
 
 class CharData:
     def __init__(self, charName):
-        with open('pplo/data/classes.json') as f:
-            self.classData = json.load(f)
+        try:
+            with open('pplo/data/classes.json') as f:
+                self.classData = json.load(f)
+        except Exception as e:
+            LOGGER.error(e)
+            sys.exit()
         self.charName = charName
         self.charData = None
 

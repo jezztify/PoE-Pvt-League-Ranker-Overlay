@@ -1,12 +1,14 @@
 import json
 import requests
+import sys
 from time import sleep
 from urllib.parse import urlparse, parse_qs
 
 import logging
 LOGGER = logging.getLogger(__name__)
 FORMAT = "[%(filename)s:%(lineno)s][%(funcName)20s()] %(message)s"
-logging.basicConfig(format=FORMAT)
+logging.basicConfig(filename='main.log', format=FORMAT)
+LOGGER.addHandler(logging.StreamHandler(sys.stdout))
 LOGGER.setLevel(logging.DEBUG)
 
 class PLData:
