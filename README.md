@@ -22,26 +22,57 @@ Character Name: ShadowsAreSquishyLUL
 
 > Run Executable file
 
-# Running Directly via Source
-
-## Installation via Source
-
-> Install [Python](https://www.python.org/downloads/)
-
+# Using the Source Code
+## Prerequisites
 ```
-Supports v3.6 to 3.9
+If you don't like pre-compiled binaries, you need to download and install the following prerequisites so you can start interacting with the code.
 ```
-
-> Install [Python Pip](https://pip.pypa.io/en/stable/installation/#get-pip-py)
-
-> Install Python dependencies
-
+> Download and install [python](https://www.python.org/downloads/)
 ```
-/path/to/python -m pip install --upgrade -r requirements.xt
+Python Versions: 3.6 to 3.9
 ```
 
-## Usage via Source
+> Download and install [git-scm](https://git-scm.com/downloads)
 
+> Clone repository
+
+```
+git clone https://github.com/jezztify/PoE-Pvt-League-Ranker-Overlay.git
+```
+
+> Change directory to the cloned repository
+
+```
+cd /path/to/PoE-Pvt\ League\ Ranker\ Overlay
+```
+
+## Building Binaries directly from Source Code
+```
+If you know what you're doing and want to build your own executable, you can follow this section
+```
+
+
+
+> Run builder
+
+```
+(Windows) bin/build.cmd
+
+(Linux)  ./bin/build
+```
+
+> Run executable
+
+```
+(Windows) /path/to/PoE-Pvt\ League\ Ranker\ Overlay/dist/__main__/__main__.exe
+
+(Linux)   ./path/to/PoE-Pvt\ League\ Ranker\ Overlay/dist/__main__/__main__
+```
+
+## Running Directly from Source Code
+```
+If you know what you're doing and want to run directly form the source code, you can follow this section
+```
 > run the app
 
 ```
