@@ -1,10 +1,9 @@
 pytest
-pytest-cov
+pytest_cov
 system_hotkey
 pypi
 requests
 jsonpath_ng
 configparser
-# logging
-# operator
 datetime
+pyinstaller

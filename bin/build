@@ -1,0 +1,9 @@
+echo "----- Removing dist folder"
+rm -rf dist
+echo "----- Compiling binary"
+pyinstaller --noconfirm --onefile --console --clean --paths "pplo"  "pplo/__main__.py"
+echo "----- Copying files"
+cp config.ini dist/
+mkdir -p dist/pplo
+cp -r pplo/data dist/pplo
+echo "----- Done!"
