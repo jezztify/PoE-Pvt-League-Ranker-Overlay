@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.responses import RedirectResponse
 
 import json
+from pathlib import Path
 
 from account import Account
 from charData import CharData
@@ -17,14 +18,14 @@ global thisAccount
 global thisCharData
 thisAccount = None
 thisCharData = None
-
+print(Path(__file__).parent)
 app = FastAPI()
 app.mount(
     '/static',
-    StaticFiles(directory='pplro/html/static'),
+    StaticFiles(directory=str(Path(__file__).parent) + '/html/static'),
     name='static',
 )
-templates = Jinja2Templates(directory='pplro/html/templates/')
+templates = Jinja2Templates(directory=str(Path(__file__).parent) + '/html/templates/')
 
 
 @app.get('/getrank')

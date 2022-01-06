@@ -17,6 +17,10 @@ class CharData(LeagueData):
 
     def _getLeagueRankData(self):
         leagueData = self.getLeagueData(accountName=self.accountName)
+        if('error' in leagueData):
+            msg = f'{leagueData["error"]["message"]}'
+            self.LOGGER.warn(msg)
+            return msg
         if('account' in leagueData['entries'][0]):
             msg = f'account {self.accountName} not found. Please recheck settings'
             self.LOGGER.warn(msg)
