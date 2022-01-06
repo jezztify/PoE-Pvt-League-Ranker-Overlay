@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="components/settings/settings.css">
+<div id="settingsView" class="panel-group">
+    <div class="panel-body">
+        <h2>Settings</h2>
+        <div id="settingsMain">
+            <form id="settingsForm" class="form-group">
+                <% Object.keys(accountDetails).forEach((key) => { %>
+                    <div class="settings-item panel-heading"><%= key %> *</div>
+                    <input required type="text" name="<%= key %>" class="form-control" id="<%= key %>" value="<%= accountDetails[key] %>" >
+                <% }); %>
+                <div class="settings-item">
+                    <span hidden id="settingsStatus"></span>
+                </div>
+            </form>
+            <div class="settings-item panel-heading">
+                <button type="button" class="btn btn-primary" id="save">Save</button>
+            </div>
+        </div>
+        <script>
+            console.log('THIS WILL BE SENT TO THE FRONTEND BUT WILL NEVER BE EXECUTED! USE ipcEvent:renderMainView INSTEAD!');
+        </script>
+    </div>
+</div>

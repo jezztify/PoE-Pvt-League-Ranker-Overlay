@@ -1,0 +1,89 @@
+{
+  "name": "pplro-electronjs",
+  "productName": "PPLRO",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "dist/index.js",
+  "watch": {
+    "restart-electron-app": {
+      "patterns": [
+        "src/",
+        "node_modules"
+      ],
+      "extensions": "ts,tsx,js,jsx"
+    },
+    "copy-src-files": {
+      "patterns": [
+        "src/"
+      ],
+      "extensions": "html,ejs,css"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf dist/",
+    "start": "tsc && npm-watch restart-electron-app",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .ts .",
+    "copy-src-files": "copyfiles -u 1 src/**/*.html src/**/*.ejs src/**/*.css dist/",
+    "restart-electron-app": "yarn clean && tsc && yarn copy-src-files && electron-forge start"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Jessnar_Sinues",
+    "email": "Jessnar_Sinues@discovery.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "pplro_electronjs"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "@electron-forge/plugin-compile": "^6.0.0-beta.61",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "copyfiles": "^2.4.1",
+    "ejs": "^3.1.6",
+    "electron": "16.0.6",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.4",
+    "npm-watch": "^0.11.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4",
+    "node-fetch": "2.6.1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "electron-squirrel-startup": "^1.0.0",
+    "node-fetch": "2.6.1"
+  }
+}
