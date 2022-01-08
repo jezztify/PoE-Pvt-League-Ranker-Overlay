@@ -1,3 +1,49 @@
+/*IMPORTING THE FONTS*/
+@font-face {
+    font-family: 'Fontin-SmallCaps';
+    src: url('https://dl.dropboxusercontent.com/s/hs9liptpyvgnvvo/Fontin-SmallCaps.ttf') format('truetype');
+}
+
 #rankView {
-    padding-top: 5%;
+  font-family: 'Fontin-SmallCaps';
+}
+
+.rankStatus {
+  display: table;
+  position: absolute;
+  top: 600px;
+  left: 35px;
+  font-size: 15px;
+}
+
+.copyright {
+  display: table;
+  position: absolute;
+  top: 620px;
+  left: 35px;
+  font-size: 16px;
+}
+
+.copyright > span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.divicard-flavour {
+    text-align: left;
+    padding-left: 60px;
+}
+
+.divicard-flavour > span {
+    display: table-cell;
+    vertical-align: middle;
+    width: 374px;
+    height: 100px;
+}
+
+.divicard-reward .rank {
+  font-size: 30px;
 }

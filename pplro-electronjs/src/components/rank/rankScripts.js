@@ -11,6 +11,26 @@ ipc.on('clearRankStatus', (event, data) => {
 ipc.on('setRankStatus', (event, data) => {
     document.getElementById('rankStatus').innerHTML = data;
 })
+
+var traverse = (thisValue, thisKey=null, finalObj={}) => {
+    if( thisValue !== null && typeof thisValue == "object" ) {
+        Object.entries(thisValue).forEach(([key, value]) => {
+            // key is either an array index or object key
+            finalObj = {...traverse(value, key, finalObj)};
+        });
+    }
+    else {
+        try {
+          finalObj[thisKey] = thisValue;
+        }
+        catch (e) {
+          finalObj = {};
+          finalObj[thisKey] = thisValue;
+        }
+        // jsonObj is a number or string
+    }
+    return finalObj
+};
 var lastXPH = 0;
 var lastExp = 0;
 var currExp = 0;
@@ -22,12 +42,18 @@ ipc.on('setRankData', (event, data) => {
             // document.getElementById('rankStatus').innerHTML = data.detail.errorMessage;
         }
 
-        document.getElementById('level').innerHTML = data.character?data.character.level:'N/A';
-        document.getElementById('rank').innerHTML = data.rank?data.rank:'N/A';
-        document.getElementById('class').innerHTML = data.character?data.character.class:'N/A';
-        
+        var collectedData = traverse(data);
+        console.log(collectedData);
+
+        Object.entries(collectedData).forEach(([key, value]) => {
+            var thisElement = document.getElementById(key);
+            if(thisElement) {
+                thisElement.innerHTML = value
+            }
+        })
+                
         let XPH;
-        currExp = data.character?data.character.experience:0;
+        currExp = collectedData.expirience?collectedData.expirience:0;
         if(lastXPH === 0) {
             XPH = 0;
         } else {

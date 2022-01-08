@@ -21,6 +21,7 @@
   },
   "scripts": {
     "clean": "rimraf dist/",
+    "monitor-static-files":"npm-watch copy-src-files",
     "start": "tsc && npm-watch restart-electron-app",
     "package": "electron-forge package",
     "make": "electron-forge make",

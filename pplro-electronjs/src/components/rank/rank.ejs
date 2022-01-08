@@ -1,24 +1,30 @@
+<link rel="stylesheet" href="https://www.poewiki.net/wiki/MediaWiki:Sitewide.css?action=raw&ctype=text/css" />
 <link rel="stylesheet" href="components/rank/rank.css" />
-<div id="rankView" class="container-fluid text-center">
-    <div class="row">
-        <div class="col">
-            <h4>Level</h4>
-            <p id="level">N/A</p>
-        </div>
-        <div class="col">
-            <h4>Rank</h4>
-            <p id="rank">N/A</p>
-        </div>
-        <div class="col">
-            <h4>Class</h4>
-            <p id="class">N/A</p>
-        </div>
-        <div class="col">
-            <h4>XPH</h4>
-            <p id="xph">N/A</p>
-        </div>            
-    </div>
-    <div class="row">
-        <p id="rankStatus" class="text-warning"></p>
-    </div>
+<div id="rankView" align="center" class="container container-fluid">
+  <div class="divicard-wrapper text-center">
+    <span id="art" class="divicard-art"><img alt="" src="https://www.poewiki.net/w/images/3/3c/Anarchy%27s_Price_card_art.png" width="390" height="280"></span>
+    <span class="divicard-frame"><img alt="" src="https://dl.dropboxusercontent.com/s/64v1jmc5t4tfv6x/Divination_card_frame.png" width="440" height="668"></span>
+    <div class="divicard-frame"></div>
+    <span class="divicard-header" id="name">N/A</span>
+    <span class="divicard-stack">Lv.<span id="level">N/A</span></span>
+    <span class="divicard-reward">
+      <span class="rank text-color -corrupted">You are Rank #<span id="rank">N/A</span></span>
+    </span>
+    <span class="divicard-flavour text-color -flavour">
+      <span>
+        Class: <span id="class">N/A</span><br/>
+        Dead: <span id="dead">N/A</span><br/>
+        Delve Depth: <span id="solo">N/A</span><br/>
+        Exp Per Hour: <spad id="xph">N/A</span>
+      </span>
+    </span>
+    <span class="copyright">
+        <span class="text-color -currency">
+            Credits: CSS and Divination Card Art by <a href="https://www.poewiki.net">POEWIKI.NET</a><br/> 
+        </span>
+    </span>
+    <span class="rankStatus">
+        <span id="rankStatus" class="text-color -corrupted"></span>
+    </span>
+  </div>
 </div>
