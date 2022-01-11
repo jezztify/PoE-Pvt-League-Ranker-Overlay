@@ -160,36 +160,40 @@ let renderer = (mainWindow) => {
         
     })
 
-    // FIX THIS!
     ipcMain.on('loadRankWindow', (event) => {
-        if(mainRankWindow && mainRankWindow.getAllWindows().length === 0) {
-            mainRankWindow = null;
+        try {
+            mainRankWindow.close();
+        } catch {
+            console.log('no rankWindow detected.');
         }
-        if(!mainRankWindow) {
-            mainRankWindow = loadRankWindow();
-        }
-    })
-
-    ipcMain.on('removeMainView', (event) => {
-        triggerIPCevent('mainRemoveOtherElements', {id:'all'}, event, mainWindow);
+        mainRankWindow = loadRankWindow();
     })
 
     ipcMain.on('openRankWindowDebug', (event) => {
         mainRankWindow.webContents.openDevTools();
     })
 
-    ipcMain.on('closeRankWindow', (event) => {
+    ipcMain.on('onCloseRankWindow', (event) => {
         console.log('closed');
         if(mainRankWindow) {
             try {
                 mainRankWindow.close();
             } catch {
-                console.error('mainRankWindow already closed!');
+                console.error('No rankWindow detected.');
             }
             mainRankWindow = null;
         }
     })
 
+    ipcMain.on('onSetMainRankWindowDraggable', (event, data) => {
+        console.log(`Setting Rank Window to ${data.draggable?'draggable': 'not draggable'}`);
+        try {
+            mainRankWindow.setIgnoreMouseEvents(!data.draggable);
+            triggerIPCevent('setMainRankWindowDraggable', data, null, mainRankWindow);
+        } catch {
+            console.log('No rankWindow detected.')
+        }
+    })
     console.log('Renderer successfully started.');
 }
 

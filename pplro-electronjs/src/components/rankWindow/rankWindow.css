@@ -5,6 +5,15 @@ html, body {
     -webkit-app-region: drag;
 }
 
+#draggable {
+    z-index: 1;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    border: 1px solid white;
+    color: white;
+    background: black;
+}
 #mainRankView {
     position: absolute;
     left: 0;

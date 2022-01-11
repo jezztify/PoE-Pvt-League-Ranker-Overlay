@@ -138,5 +138,7 @@ dmypy.json
 # node_modules
 node_modules
 
-# dist alternative
+# electron-forge output directory
 out
+
+yarn.lock

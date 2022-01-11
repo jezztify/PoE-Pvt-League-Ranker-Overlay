@@ -5,10 +5,10 @@ ipcRenderer.send('loadRankWindowRankView');
 
 // DOM Event Handlers
 let scaleView = (scaleValue) => {
-    let mainRankViewDiv = document.getElementById('mainRankView');
-    mainRankViewDiv.style.transform = `scale(${scaleValue})`;
-    mainRankViewDiv.style.transformOrigin = '0% 0%';
-    let rect = mainRankViewDiv.getBoundingClientRect();
+    let rankViewDiv = document.getElementById('rankView');
+    rankViewDiv.style.transform = `scale(${scaleValue})`;
+    rankViewDiv.style.transformOrigin = '0% 0%';
+    let rect = rankViewDiv.getBoundingClientRect();
     window.resizeTo(rect.width,rect.height);
 }
 
@@ -16,6 +16,17 @@ let scaleView = (scaleValue) => {
 ipcRenderer.on('setRankWindowViewScale', (event, data) => {
     scaleView(data.scaleValue)
 })
+
+ipcRenderer.on('setMainRankWindowDraggable', (event, data) => {
+    console.log('RECEIVED DRAGGABLE', data);
+    let draggable = document.getElementById('draggable');
+    if(data.draggable) {
+        draggable.removeAttribute('hidden');
+    } else {
+        draggable.setAttribute('hidden', true);
+    }
+})
+
 
 ipcRenderer.on('renderRankWindow', (event, data) => {
     console.log('Rendering Rank Window');
@@ -41,4 +52,6 @@ ipcRenderer.on('renderRankWindow', (event, data) => {
         let rect = rankView.getBoundingClientRect();
         window.resizeTo(rect.width, rect.height);
     }, 300);
+
+ 
 })

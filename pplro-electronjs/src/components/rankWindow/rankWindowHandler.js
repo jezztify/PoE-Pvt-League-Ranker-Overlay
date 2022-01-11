@@ -1,5 +1,5 @@
-let BrowserWindow = require('electron').BrowserWindow;
-let path = require('path');
+import {BrowserWindow} from 'electron'
+import * as path from 'path';
 
 let loadRankWindow = (parentWindow) => {
     let rankWindow = new BrowserWindow({
@@ -14,10 +14,6 @@ let loadRankWindow = (parentWindow) => {
 
     // rankWindow.webContents.openDevTools();
     rankWindow.loadFile(path.join(__dirname,'rankWindow.html'));
-    rankWindow.on('close', (event) => {
-        rankWindow.webContents.send('closeRankWindow');
-        rankWindow = null;
-    })
     return rankWindow
 }
 

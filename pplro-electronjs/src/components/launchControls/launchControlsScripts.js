@@ -12,9 +12,25 @@ document.getElementById('windowScale').addEventListener('change', (event) => {
 });
 
 document.getElementById('close').addEventListener('click', (event) => {
-    ipcRenderer.send('closeRankWindow');
+    ipcRenderer.send('onCloseRankWindow');
 })
 
 document.getElementById('debug').addEventListener('click', (event) => {
     ipcRenderer.send('openRankWindowDebug');
+})
+
+document.getElementById('draggable').addEventListener('change', (event) => {
+    let draggable = event.currentTarget.checked;
+    data = {
+        draggable: draggable
+    }
+    ipcRenderer.send('onSetMainRankWindowDraggable', data);
+})
+
+document.getElementById('clickThrough').addEventListener('change', (event) => {
+    let clickThrough = event.currentTarget.checked;
+    data = {
+        clickThrough: clickThrough
+    }
+    ipcRenderer.send('onSetMainRankWindowClickThrough', data);
 })
