@@ -65,7 +65,7 @@ let loadSettingsView = async () => {
     return content
 }
 
-let settingsScriptPath = './components/settings/settingsScripts' //path.join(__dirname, './settingsScripts');
+let settingsScriptPath = path.join(__dirname, './settingsScripts'); //'./components/settings/settingsScripts';
 
 module.exports = {
     loadSettingsView: loadSettingsView,

@@ -1,15 +1,28 @@
-let ipc = require('electron').ipcRenderer;
+let ipcRenderer = require('electron').ipcRenderer;
 
 // Initialization
-ipc.send('getRankData')
+getRankDataParams = {
+    'ipcCallBack': {
+        event: 'setRankData',
+        status: 'setRankStatus'
+    }
+}
+ipcRenderer.send('getRankData', getRankDataParams);
 
 
-ipc.on('clearRankStatus', (event, data) => {
+ipcRenderer.on('clearRankStatus', (event, data) => {
     document.getElementById('rankStatus').innerHTML = '';
 })
 
-ipc.on('setRankStatus', (event, data) => {
-    document.getElementById('rankStatus').innerHTML = data;
+ipcRenderer.on('setRankStatus', (event, data, hideLaunchBtn=false) => {
+    let launchBtn = document.getElementById('launchBtn');
+    if(launchBtn && hideLaunchBtn) {
+        launchBtn.setAttribute('hidden', true);
+    }
+    let rankStatusDiv = document.getElementById('rankStatus');
+    if(rankStatusDiv) {
+        rankStatusDiv.innerHTML = data;
+    }
 })
 
 var traverse = (thisValue, thisKey=null, finalObj={}) => {
@@ -34,16 +47,22 @@ var traverse = (thisValue, thisKey=null, finalObj={}) => {
 var lastXPH = 0;
 var lastExp = 0;
 var currExp = 0;
-ipc.on('setRankData', (event, data) => {
+ipcRenderer.on('setRankData', (event, data) => {
     if(document.getElementById('rankView')) {
-        ipc.emit('clearRankStatus');
+        ipcRenderer.emit('clearRankStatus');
         if(data.detail) {
-            ipc.emit('setRankStatus', data.detail.errorMessage);
+            ipcRenderer.emit('setRankStatus', data.detail.errorMessage, { hideLaunchBtn:true });
+            
+            return;
             // document.getElementById('rankStatus').innerHTML = data.detail.errorMessage;
         }
 
+        let launchBtn = document.getElementById('launchBtn');
+        if(launchBtn) {
+            launchBtn.removeAttribute('hidden');
+        }
+
         var collectedData = traverse(data);
-        console.log(collectedData);
 
         Object.entries(collectedData).forEach(([key, value]) => {
             var thisElement = document.getElementById(key);
@@ -68,6 +87,16 @@ ipc.on('setRankData', (event, data) => {
         if(data.detail) {
             return
         }
-        ipc.send('getRankData');
+
+        data = {
+            'ipcCallBack': {
+                event: 'setRankData',
+                status: 'setRankStatus'
+            }
+        }
+
+        setTimeout(() => {
+            ipcRenderer.send('getRankData', data);
+        }, 5000);
     }
 })

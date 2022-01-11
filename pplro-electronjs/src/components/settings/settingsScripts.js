@@ -1,28 +1,30 @@
-let ipc = require('electron').ipcRenderer;
+let ipcRenderer = require('electron').ipcRenderer;
 
 // Initialization
-// ipc.send('tester', 'reached settings scripts');
+// ipcRenderer.send('tester', 'reached settings scripts');
 
 // IPC Event Handlers
-ipc.on('updateSettingsStatus', (event, data) => {
+ipcRenderer.on('updateSettingsStatus', (event, data) => {
     let settingsStatus = document.getElementById('settingsStatus');
-    if(data.hide) {
-        settingsStatus.setAttribute('hidden', true);
-        settingsStatus.innerHTML = '';
-    } else {
-        settingsStatus.removeAttribute('hidden')
-        settingsStatus.innerHTML = data;
-        if(data.toLowerCase().includes('success')){
-            settingsStatus.classList.add('text-success');
-            settingsStatus.classList.remove('text-warn');
+    if(settingsStatus) {
+        if(data.hide) {
+            settingsStatus.setAttribute('hidden', true);
+            settingsStatus.innerHTML = '';
         } else {
-            settingsStatus.classList.add('text-warn');
-            settingsStatus.classList.remove('text-success');
+            settingsStatus.removeAttribute('hidden')
+            settingsStatus.innerHTML = data;
+            if(data.toLowerCase().includes('success')){
+                settingsStatus.classList.add('text-success');
+                settingsStatus.classList.remove('text-warn');
+            } else {
+                settingsStatus.classList.add('text-warn');
+                settingsStatus.classList.remove('text-success');
+            }
         }
     }
 })
 
-ipc.on('clearSettingsStatus', (event, data) => {
+ipcRenderer.on('clearSettingsStatus', (event, data) => {
     let settingsStatus = document.getElementById('settingsStatus');
     settingsStatus.innerHTML = '';
     settingsStatus.setAttribute('hidden');
@@ -42,7 +44,7 @@ document.getElementById('save').addEventListener('click', (event) => {
             data[inputs[i]['name']] = inputs[i]['value'];
     
         }    
-        ipc.send('onSaveSettings', data);
+        ipcRenderer.send('onSaveSettings', data);
     }
 })
 

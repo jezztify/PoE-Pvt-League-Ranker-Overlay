@@ -1,27 +1,55 @@
-let ipc = require('electron').ipcRenderer;
+let ipcRenderer = require('electron').ipcRenderer;
 
 // ipc Event Handlers
+
 let mainViews = [];
 let mainScripts = [];
-ipc.on('renderMainView', (event, data) => {
+
+let mainAddElement = (data) => {
+    let mainViewDiv = document.getElementById('mainViews');
+    if(!mainViews.includes(data.id)) {
+        console.log(`Adding ${data.id} to ${mainViews}`);
+        mainViewDiv.appendChild(data.view);
+        mainViews.push(data.id);
+    }
+}
+
+let mainRemoveOtherElements = (data) => {
+    console.log(mainViews);
+    for(var i = 0; i < mainViews.length; i++) {
+        if(mainViews[i] !== data.id) {
+            console.log(`Removing ${mainViews[i]} from ${mainViews}`);
+            document.getElementById(mainViews[i]).remove();
+            mainViews.splice(mainViews.indexOf(mainViews[i]), 1);
+        }
+    }
+}
+
+// ipcRenderer.on('mainAddElement', (event, data) => {
+//     mainAddElement(data);
+// }) 
+
+ipcRenderer.on('mainRemoveOtherElements', (event, data) => {
+    mainRemoveOtherElements(data);
+}) 
+
+
+ipcRenderer.on('renderMainView', (event, data) => {
     // Render HTML
-    let mainViewDiv = document.getElementById('main');
     let view;
     view = document.createElement('div')
     view.innerHTML = data.content;
-    let id = view.getElementsByTagName('div')[0].id;
-    if(!mainViews.includes(id)) {
-        mainViews.push(id);
-        mainViewDiv.appendChild(view);
+    let id = view.getElementsByTagName('div')[0].id + 'Group';
+    view.id = id
+    elementData = {
+        view: view,
+        id: id
     }
+    mainAddElement(elementData);
     
-    for(var i = 0; i < mainViews.length; i++) {
-        if(mainViews[i] !== id) {
-            document.getElementById(mainViews[i]).setAttribute('hidden', true);
-        } else {
-            document.getElementById(mainViews[i]).removeAttribute('hidden');
-        }
-    }
+    // Remove unneeded elements
+    mainRemoveOtherElements(elementData);
+
 
     // Render and Execute Scripts
     if(data.scriptPath !== null) {

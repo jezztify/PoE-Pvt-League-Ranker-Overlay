@@ -4,7 +4,7 @@ var lastExp = 0;
 var currExp = 0;
 var expTicks = 0;
 let setData = (resp) => {
-    setTimeout(main, 10000);
+    setTimeout(main, 5000);
     $('#rank').text(resp.rank);
     $('#level').text(resp.character.level);
     $('#class').text(resp.character.class);
