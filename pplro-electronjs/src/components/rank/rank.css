@@ -1,0 +1,43 @@
+/*IMPORTING THE FONTS*/
+html, body {
+  background: transparent;
+}
+@font-face {
+    font-family: 'Fontin-SmallCaps';
+    src: url('https://dl.dropboxusercontent.com/s/hs9liptpyvgnvvo/Fontin-SmallCaps.ttf') format('truetype');
+}
+
+.divicard-wrapper {
+  font-family: 'Fontin-SmallCaps';
+}
+
+.divicard-reward {
+  font-size: 30px;
+}
+
+.divicard-flavour {
+  font-size: 20px;
+}
+.rankStatus {
+  display: table;
+  position: absolute;
+  top: 600px;
+  left: 35px;
+  font-size: 15px;
+}
+
+.copyright {
+  display: table;
+  position: absolute;
+  top: 620px;
+  left: 35px;
+  font-size: 16px;
+}
+
+.copyright > span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 10px;
+  text-align: center;
+  width: 100%;
+}

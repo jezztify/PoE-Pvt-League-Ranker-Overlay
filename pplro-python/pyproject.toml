@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "poe-pvt league overlay"
+version = "0.1.0"
+description = ""
+authors = ["Jessnar Sinues <jessnarsinues@gmail.com>"]
+license = "MIT License"
+
+[tool.poetry.dependencies]
+python = ">= 3.6.2, <= 3.9.8"
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+system_hotkey = "^1.0.3"
+pypi = "^2.1"
+pypiwin32 = "^223"
+requests = "^2.26.0"
+jsonpath-ng = "^1.5.3"
+configparser = "^5.2.0"
+DateTime = "^4.3"
+pyinstaller = "^4.7"
+fastapi = "^0.70.1"
+uvicorn = "^0.16.0"
+Jinja2 = "^3.0.3"
+python-multipart = "^0.0.5"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

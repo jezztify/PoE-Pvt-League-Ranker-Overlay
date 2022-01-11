@@ -1,0 +1,9 @@
+echo "----- Removing dist folder"
+rm -rf dist
+echo "----- Compiling binary"
+pyinstaller --noconfirm --console --clean --paths "src"  "__main__.spec"
+# echo "----- Copying files"
+# cp config.ini dist/__main__
+# mkdir -p dist/__main__/src/
+# cp -r pplro/data dist/__main__/src/
+echo "----- Done!"

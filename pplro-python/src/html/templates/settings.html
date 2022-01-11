@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href='/static/css/settings.css'>
+        <script src='/static/js/settings.js' ></script>
+    </head>
+    <body id="main">
+        <div class="container">
+            <div class="panel-group">
+                <div class="panel-body">
+                    <h2>Settings</h2>
+                    <h2>Settings</h2><h2>Settings</h2><h2>Settings</h2><h2>Settings</h2>
+                    <form id="settingsForm" method="POST" action="/account" class="form-group">
+                        {% for key in settings %}
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">{{ key }} *</div>
+                            <input required type="text" name={{ key }} class="form-control" id={{ key }} placeholder={{ settings['key'] }}>
+                        </div>
+                        {% endfor %}
+                    </form>
+                    <div class="form-group panel">
+                        <button onclick="submitForm('submit')" id="submit" class="btn btn-success">Run</button>
+                        <button onclick="submitForm('preview')" id="preview" class="btn btn-info">Preview</button>
+                    </div>
+                    <div id="output" hidden class="panel">
+                    </div>
+                </div>
+            </div>
+            <div id="previewFrame" class="row">
+            </div>
+        </div>
+    </body>
+</html>

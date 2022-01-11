@@ -1,0 +1,10 @@
+pytest
+pytest_cov
+system_hotkey
+pypi
+pypiwin32
+requests
+jsonpath_ng
+configparser
+datetime
+pyinstaller

@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://www.poewiki.net/wiki/MediaWiki:Sitewide.css?action=raw&ctype=text/css" />
+<% if(isMainView) { %>
+  <link rel="stylesheet" href="components/rank/rank.css" />
+<% } else { %>
+  <link rel="stylesheet" href="../rank/rank.css" />
+<% } %>
+<!-- <div id="rankView" align="center" class="container container-fluid"> -->
+  <div id="rankView" class="text-center -divicard">
+    <div class="divicard-wrapper">
+      <span id="art" class="divicard-art"><img alt="" src="https://dl.dropboxusercontent.com/s/e9wpf4alspkrv5u/Power.gif" width="390" height="280"></span>
+      <span class="divicard-frame"><img alt="" src="https://dl.dropboxusercontent.com/s/64v1jmc5t4tfv6x/Divination_card_frame.png" width="440" height="668"></span>
+      <div class="divicard-frame"></div>
+      <span class="divicard-header" id="name">N/A</span>
+      <span class="divicard-stack">Lv.<span id="level">N/A</span></span>
+      <span class="divicard-reward">
+        <span class="rank text-color -corrupted">You are Rank #<span id="rank">N/A</span></span>
+      </span>
+      <span class="divicard-flavour text-color -flavour">
+        <span>
+          Class: <span id="class">N/A</span><br/>
+          Dead: <span id="dead">N/A</span><br/>
+          Delve Depth: <span id="solo">N/A</span><br/>
+          Exp Per Hour: <spad id="xph">N/A</span>
+        </span>
+      </span>
+      <span class="copyright">
+          <span class="text-color -currency">
+              Credits: CSS and Divination Card Art by <a href="https://www.poewiki.net">POEWIKI.NET</a><br/> 
+          </span>
+      </span>
+      <span class="rankStatus">
+          <span id="rankStatus" class="text-color -corrupted"></span>
+      </span>
+    </div>
+  </div>
+<!-- </div> -->
