@@ -1,6 +1,6 @@
 * when handling promises: when you are expecting a promise to be returned, use a setTimeout function to handle it then <do something>
 
-* menubar functions can use ipc.emit() to trigger ipc events
+* menubar functions can use ipcRenderer.emit() to trigger ipc events
 
 * ipcRenderer should only focus on data retrieval and presentation
 

@@ -1,13 +1,23 @@
 /*IMPORTING THE FONTS*/
+html, body {
+  background: transparent;
+}
 @font-face {
     font-family: 'Fontin-SmallCaps';
     src: url('https://dl.dropboxusercontent.com/s/hs9liptpyvgnvvo/Fontin-SmallCaps.ttf') format('truetype');
 }
 
-#rankView {
+.divicard-wrapper {
   font-family: 'Fontin-SmallCaps';
 }
 
+.divicard-reward {
+  font-size: 30px;
+}
+
+.divicard-flavour {
+  font-size: 20px;
+}
 .rankStatus {
   display: table;
   position: absolute;
@@ -30,20 +40,4 @@
   font-size: 10px;
   text-align: center;
   width: 100%;
-}
-
-.divicard-flavour {
-    text-align: left;
-    padding-left: 60px;
-}
-
-.divicard-flavour > span {
-    display: table-cell;
-    vertical-align: middle;
-    width: 374px;
-    height: 100px;
-}
-
-.divicard-reward .rank {
-  font-size: 30px;
 }

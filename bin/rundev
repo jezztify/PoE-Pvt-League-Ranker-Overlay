@@ -1,0 +1,8 @@
+#!bash
+cd pplro-electronjs
+npm-watch copy-src-files &
+yarn start &
+cd ..
+cd pplro-python
+poetry run python src &
+cd ..

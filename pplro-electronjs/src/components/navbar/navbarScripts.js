@@ -1,23 +1,32 @@
-let ipc = require('electron').ipcRenderer;
+let ipcRenderer = require('electron').ipcRenderer;
 
 // Initialization
-ipc.send('loadNavbar');
+ipcRenderer.send('loadNavbar');
 
 // IPC Event Handlers
-ipc.on('renderNavbar', (event, contents) => {
+ipcRenderer.on('renderNavbar', (event, contents) => {
     // Renders
     document.getElementById('navbar').innerHTML = contents;
     
     // DOM Event Handlers
     document.getElementById('settingsBtn').addEventListener('click', (event) => {
-        event.preventDefault();
-        ipc.send('loadSettingsView');
+        ipcRenderer.send('loadSettingsView');
     });
 
     document.getElementById('previewBtn').addEventListener('click', (event) => {
-        event.preventDefault();
-        ipc.send('loadPreview');
-        ipc.send('getRankData');
+        ipcRenderer.send('loadPreview');
+        data = {
+            'ipcCallBack': {
+                event: 'setRankData',
+                status: 'setRankStatus'
+            }
+        }
+        ipcRenderer.send('getRankData', data);
     })
+
+    document.getElementById('launchBtn').addEventListener('click', (event) => {
+        ipcRenderer.send('loadLaunchControlsView');
+        ipcRenderer.send('loadRankWindow');
+    });
 
 })

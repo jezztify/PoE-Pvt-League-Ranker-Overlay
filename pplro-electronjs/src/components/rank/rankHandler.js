@@ -10,10 +10,10 @@ let getRankData = async () => {
     return fetch(url, settings);
 }
 
-let renderTemplate = async () => {
+let renderTemplate = async (isMainView) => {
     var templatePath = (path.join(__dirname, './rank.ejs'));
     let content;
-    ejs.renderFile(templatePath, {}, (err, str) => {
+    ejs.renderFile(templatePath, {isMainView: isMainView}, (err, str) => {
         if(err) {
             console.log(err);
         } else {
@@ -23,12 +23,12 @@ let renderTemplate = async () => {
     return content
 }
 
-let loadRankView = async () => {
-    let content = await renderTemplate();
+let loadRankView = async (isMainView) => {
+    let content = await renderTemplate(isMainView);
     return content
 }
 
-let rankScriptPath = './components/rank/rankScripts' //path.join(__dirname, './rankScripts');
+let rankScriptPath = path.join(__dirname, './rankScripts'); //'./components/rank/rankScripts'; //
 
 module.exports = {
     loadRankView: loadRankView,
